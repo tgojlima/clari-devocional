@@ -1,0 +1,346 @@
+:root {
+    --lilas-principal: #9b5de5;
+    --lilas-claro: #f1e6ff;
+    --lilas-escuro: #7138b5;
+    --rosa-suave: #ffc2d1;
+    --azul-ceu: #a2d2ff;
+    --dourado: #ffd166;
+    --branco: #ffffff;
+    --texto-escuro: #4a4a4a;
+    --fundo: #fefaff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Neue', cursive, sans-serif;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto-escuro);
+    background-image: radial-gradient(var(--lilas-claro) 10%, transparent 10%);
+    background-size: 20px 20px;
+}
+
+h1, h2, h3, .btn-primario {
+    font-family: 'Baloo 2', cursive, sans-serif;
+}
+
+#app {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: var(--branco);
+    box-shadow: 0 0 20px rgba(155, 93, 229, 0.2);
+    position: relative;
+    overflow-x: hidden;
+}
+
+.tela {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tela Inicial */
+.cabecalho-inicial {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cabecalho-inicial h1 {
+    color: var(--lilas-principal);
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0px var(--lilas-claro);
+}
+
+.mensagem-amor {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--lilas-escuro);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.avatares-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 45%;
+    text-align: center;
+}
+
+.avatar-principal {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--lilas-principal);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: var(--lilas-claro);
+    object-fit: cover;
+}
+
+.balao-fala {
+    position: absolute;
+    top: -40px;
+    background: var(--branco);
+    border: 2px solid var(--lilas-principal);
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 0px var(--lilas-principal);
+    z-index: 10;
+}
+
+.balao-clari { left: -10px; }
+.balao-clau { right: -10px; }
+
+.balao-fala::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: var(--lilas-principal) transparent transparent transparent;
+}
+
+.progresso-semana {
+    background-color: var(--lilas-claro);
+    padding: 15px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 2px dashed var(--lilas-principal);
+}
+
+.barra-progresso {
+    height: 20px;
+    background-color: var(--branco);
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+    border: 2px solid var(--lilas-principal);
+}
+
+.progresso-preenchimento {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lilas-principal), var(--rosa-suave));
+    transition: width 0.5s ease;
+}
+
+.medalhas {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+/* Botões */
+.btn-primario {
+    background-color: var(--lilas-principal);
+    color: var(--branco);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 0px var(--lilas-escuro);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-primario:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.btn-secundario {
+    background-color: var(--branco);
+    color: var(--lilas-principal);
+    border: 2px solid var(--lilas-principal);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-icone {
+    background: none;
+    border: none;
+    color: var(--lilas-principal);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-icone-pequeno {
+    background: var(--lilas-principal);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Tela Devocional */
+.badge-lilac {
+    background-color: var(--lilas-claro);
+    color: var(--lilas-escuro);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.cabecalho-devocional h2 {
+    color: var(--lilas-principal);
+    margin-bottom: 15px;
+}
+
+.timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--rosa-suave);
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--texto-escuro);
+    margin-bottom: 20px;
+}
+
+.cartao {
+    background: var(--branco);
+    border: 2px solid var(--lilas-claro);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.cartao h3 {
+    color: var(--lilas-escuro);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.destaque-biblico {
+    font-size: 1.1rem;
+    font-style: italic;
+    border-left: 4px solid var(--lilas-principal);
+    padding-left: 10px;
+    color: var(--texto-escuro);
+}
+
+#lista-questoes {
+    list-style-type: none;
+}
+
+#lista-questoes li {
+    background-color: var(--lilas-claro);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    padding-left: 30px;
+}
+
+#lista-questoes li::before {
+    content: '💜';
+    position: absolute;
+    left: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    border: 2px solid var(--lilas-claro);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--lilas-principal);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.ativa {
+    display: flex;
+}
+
+.modal-conteudo {
+    background: var(--branco);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    border: 4px solid var(--lilas-principal);
+}
+
+.emoji-gigante {
+    font-size: 4rem;
+    margin: 20px 0;
+}
+
+.versiculo-final {
+    font-style: italic;
+    color: var(--lilas-escuro);
+    margin-bottom: 20px;
+}
+
+/* Histórico */
+.item-historico {
+    background: var(--lilas-claro);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.avatar-personagem { width: 60px; height: 60px; background-color: var(--lilas-claro); border: 3px solid var(--lilas-principal); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-shrink: 0; overflow: hidden; }
+.avatar-personagem img { width: 100%; height: 100%; object-fit: cover; }
+

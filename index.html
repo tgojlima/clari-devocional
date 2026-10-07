@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clari & Clau — Devocional da Mamãe e da Filha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Tela Inicial -->
+        <section id="tela-inicial" class="tela ativa">
+            <div class="cabecalho-inicial">
+                <h1>Clari & Clau</h1>
+                <p>Devocional da Mamãe e da Filha</p>
+                <span class="mensagem-amor">Feito com muito amor para a Clari, minha menina que ama lilás 💜</span>
+            </div>
+            
+            <div class="avatares-container">
+                <div class="avatar-wrapper">
+                    <div class="balao-fala balao-clari">Oi, mamãe! Pronta?</div>
+                    <img src="assets/imagens/avatares/clari.png" alt="Avatar da Clari" class="avatar-principal">
+                </div>
+                <div class="avatar-wrapper">
+                    <div class="balao-fala balao-clau">Sempre pronta, filhota!</div>
+                    <img src="assets/imagens/avatares/clau.png" alt="Avatar da Clau" class="avatar-principal">
+                </div>
+            </div>
+
+            <div class="progresso-semana">
+                <h3>Progresso da Semana</h3>
+                <div class="barra-progresso">
+                    <div class="progresso-preenchimento" id="barra-preenchimento" style="width: 0%;"></div>
+                </div>
+                <p id="texto-progresso">0/5 dias concluídos</p>
+                <div class="medalhas" id="container-medalhas">
+                    <!-- Emojis de selos aparecem aqui -->
+                </div>
+            </div>
+
+            <button id="btn-comecar" class="btn-primario">
+                <i class="fas fa-book-open"></i> Começar o Devocional de Hoje
+            </button>
+            <button id="btn-historico" class="btn-secundario">
+                <i class="fas fa-history"></i> Ver Anotações
+            </button>
+        </section>
+
+        <!-- Tela de Devocional -->
+        <section id="tela-devocional" class="tela">
+            <button id="btn-voltar" class="btn-icone"><i class="fas fa-arrow-left"></i></button>
+            
+            <div class="cabecalho-devocional">
+                <div class="info-dia">
+                    <span id="dia-semana" class="badge-lilac">Segunda-feira</span>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 10px;">
+                        <div id="avatar-personagem-dia" class="avatar-personagem">🧠</div>
+                        <h2 id="titulo-devocional" style="margin-bottom: 0;">Título do Devocional</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timer-container">
+                <i class="fas fa-clock"></i> <span id="timer-display">15:00</span>
+                <button id="btn-timer" class="btn-icone-pequeno"><i class="fas fa-play"></i></button>
+            </div>
+
+            <div class="conteudo-devocional">
+                <div class="cartao texto-biblico-cartao">
+                    <h3><i class="fas fa-bible"></i> Palavra do Dia (<span id="ref-biblica"></span>)</h3>
+                    <p id="texto-biblico" class="destaque-biblico"></p>
+                </div>
+
+                <div class="cartao reflexao-cartao">
+                    <h3 id="tema-avatar-titulo"><i class="fas fa-lightbulb"></i> Reflexão</h3>
+                    <p id="texto-reflexao"></p>
+                </div>
+
+                <div class="cartao questoes-cartao">
+                    <h3><i class="fas fa-comments"></i> Hora da Conversa</h3>
+                    <ul id="lista-questoes">
+                    </ul>
+                </div>
+
+                <div class="cartao curiosidade-cartao">
+                    <h3><i class="fas fa-star"></i> Você Sabia?</h3>
+                    <p id="texto-curiosidade"></p>
+                </div>
+
+                <div class="cartao oracao-cartao">
+                    <h3><i class="fas fa-hands-praying"></i> Oração de Hoje</h3>
+                    <p id="texto-oracao"></p>
+                </div>
+
+                <div class="cartao anotacoes-cartao">
+                    <h3><i class="fas fa-pen"></i> Nossas Anotações Secretas</h3>
+                    <label>Clari escreveu:</label>
+                    <textarea id="anotacao-clari" placeholder="Escreva aqui o que Deus falou com você..."></textarea>
+                    
+                    <label>Mamãe (Clau) escreveu:</label>
+                    <textarea id="anotacao-clau" placeholder="Escreva aqui mamãe..."></textarea>
+                    
+                    <button id="btn-concluir" class="btn-primario btn-bloco">
+                        <i class="fas fa-check-circle"></i> Concluir Devocional
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tela de Histórico -->
+        <section id="tela-historico" class="tela">
+            <button id="btn-voltar-hist" class="btn-icone"><i class="fas fa-arrow-left"></i></button>
+            <h2>Diário Clari & Clau 💜</h2>
+            <div id="lista-historico">
+                <!-- Histórico será gerado aqui -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de Conclusão -->
+    <div id="modal-conclusao" class="modal">
+        <div class="modal-conteudo">
+            <h2>Parabéns, Meninas! 🎉</h2>
+            <p>Devocional concluído com sucesso!</p>
+            <div id="emoji-conquista" class="emoji-gigante">🌟</div>
+            <p id="versiculo-resumo" class="versiculo-final">"O Senhor é o meu pastor e nada me faltará."</p>
+            <button id="btn-fechar-modal" class="btn-primario">Amém! 🙏</button>
+        </div>
+    </div>
+
+    <script src="estudos/estudos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
